@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+"-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+"http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+    <!--
+     This is a minimal Validator form file with a couple of examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+
+        <!-- An example form -->
+        <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                <arg key="logonForm.password"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9a-zA-Z]*$</var-value>
+                </var>
+            </field>
+        </form>
+
+        <form name="LoginFormBean">
+            <field
+                property="username"
+                depends="required">
+                <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                <arg key="logonForm.password"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9a-zA-Z]*$</var-value>
+                </var>
+            </field>
+        </form>
+
+    </formset>
+
+    <!-- An example formset for another locale -->
+    <formset language="fr">
+
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^[0-9a-zA-Z]*$</constant-value>
+        </constant>
+
+        <!-- An example form -->
+        <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                <arg key="logonForm.password"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9a-zA-Z]*$</var-value>
+                </var>
+            </field>
+        </form>
+
+    </formset>
+    <formset>
+        <form name="RateRequestForm" >
+            <field property="fromDate" depends="required">
+                <arg key="rr.fromDate"/>
+            </field>
+            <field property="toDate" depends="required">
+                <arg key="rr.toDate"/>
+            </field>
+            <field property="org_Location" depends="required">
+                <arg key="rr.org_Loc"/>
+            </field>
+
+            <field property="dest_Location" depends="required">
+                <arg key="rr.dest_Loc"/>
+            </field>
+            <field property="commodity" depends="required">
+                <arg key="rr.comdty"/>
+            </field>
+            <field property="cargo_Type" depends="required">
+                <arg key="rr.container_Type"/>
+            </field>
+            <field property="volume" depends="required">
+                <arg key="rr.volume"/>
+            </field>
+            <field property="weight" depends="required">
+                <arg key="rr.weight"/>
+            </field>
+            <field property="competitionCode" depends="required">
+                <arg key="rr.competitioncode"/>
+            </field>
+            <field property="competitionAmt" depends="required">
+                <arg key="rr.competitionAmt"/>
+            </field>
+            <field property="expectedAmt" depends="required">
+                <arg key="rr.expectedAmt"/>
+            </field>
+            <field property="routingHiddenDetails" depends="required">
+                <arg key="rr.route"/>
+            </field>
+        </form>
+        <form name="RegistrationForm">
+
+            <field property="userName" depends="required">
+                <arg key="error.reg.client.companyname"/>
+            </field>
+
+            <field property="countrycode" depends="required">
+                <arg key="error.reg.client.country"/>
+            </field>
+
+            <field property="company_address" depends="required">
+                <arg key="error.reg.client.address"/>
+            </field>
+            <field property="city_desc" depends="required">
+                <arg key="error.reg.client.city"/>
+            </field>
+            <field property="agencycode" depends="required">
+                <arg key="error.reg.client.location"/>
+            </field>
+
+            
+
+            <field property="company_country_code"   depends="required,mask">
+                <arg key="error.reg.client.company_Counrty_code"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+
+            
+
+            <field property="company_phone_no" depends="required,mask">
+                <arg key="error.reg.client.company_phone_no"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+
+            <field property="department" depends="required">
+                <arg key="error.reg.client.department"/>
+            </field>
+
+            <field property="loginname" depends="required">
+                <arg key="error.reg.client.Loginname"/>
+            </field>
+            <field property="password" depends="required">
+                <arg key="error.reg.client.password"/>
+            </field>
+            <field property="cpassword" depends="required">
+                <arg key="error.reg.client.cpassword"/>
+            </field>
+            <field property="cpassword" depends="validwhen">
+                <arg  key="err.reg.client.notmatchpassword" />
+                <var>
+                    <var-name>test</var-name>
+                    <var-value>(password == *this*)</var-value>
+                </var>
+            </field>
+            <field property="firstname" depends="required">
+                <arg key="error.reg.client.firstname"/>
+            </field>
+            <field property="lastname" depends="required">
+                <arg key="error.reg.client.lastname"/>
+            </field>
+            <field property="cust_country_code" depends="required,mask">
+                <arg key="error.reg.client.cust_Counrty_code"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+
+            
+
+            <field property="cust_phone_no" depends="required,mask">
+                <arg key="error.reg.client.cust_phone_no"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+            <field property="mobile_code" depends="mask">
+                <arg key="error.reg.client.mobile_code"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+            <field property="mobile_no" depends="mask">
+                <arg key="error.reg.client.mobile_no"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+
+            <field property="fax_country_code" depends="mask">
+                <arg key="error.reg.client.fax_country_code"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+            <field property="fax_phone_code" depends="mask">
+                <arg key="error.reg.client.fax_phone_code"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+
+            <field property="fax_phone_no" depends="mask">
+                <arg key="error.reg.client.fax_phone_no"/>
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^[0-9]*$</var-value>
+                </var>
+            </field>
+            <field property="email" depends="required,email">
+                <arg key="error.reg.client.email"/>
+
+            </field>
+            <field property="agree" depends="required">
+                <arg key="error.reg.client.terms"/>
+            </field>
+
+            <field property="captcha" depends="required">
+                <arg key="error.reg.client.captcha"/>
+            </field>
+
+            
+        </form>
+        <form name="track">
+            <field property="type" depends="required,minlength">
+                <arg0  key="error.tracking.type"/>
+            </field>
+            <field property="txtNumbers" depends="required">
+                <arg0 key="error.tracking.txtNumbers"/>
+                <arg1 name="minlength" key="${var:minlength}" resource="false"/>
+                <var><var-name>minlength</var-name><var-value>11</var-value></var>
+            </field>
+            <field property="email_text" depends="required,email">
+                <arg key="error.tracking.email_text"/>
+            </field>
+        </form>
+    </formset>
+    <formset >
+        <form name="SurchargeForm">
+            <field
+                property="eqtype"
+                depends="required">
+                <arg0 key="error.eqtype"/>
+            </field>
+            <field
+                property="polname"
+                depends="required">
+                <arg0 key="error.polname"/>
+
+            </field>
+            <field
+                property="podname"
+                depends="required">
+                <arg0 key="error.podname"/>
+
+            </field>
+        </form>
+
+
+    </formset>
+
+    <formset >
+        <form name="TariffForm">
+            <field
+                property="eqtype"
+                depends="required">
+                <arg0 key="error.eqtype"/>
+            </field>
+            <field
+                property="polname"
+                depends="required">
+                <arg0 key="error.polname"/>
+
+            </field>
+            <field
+                property="podname"
+                depends="required">
+                <arg0 key="error.podname"/>
+
+            </field>
+        </form>
+
+
+    </formset>
+    <formset>
+        <!--SI Begin-->
+        <form name="SIEditForm">
+            <field
+                property="spname"
+                depends="required">
+                <arg0 key="error.spname"/>
+            </field>
+
+
+            <field
+                property="spfax"
+                depends="required">
+                <arg0 key="error.spfax"/>
+            </field>
+            <field
+                property="spcountry"
+                depends="required">
+                <arg0 key="error.spcountry"/>
+            </field>
+            <field
+                property="spcity"
+                depends="required">
+                <arg0 key="error.spcity"/>
+            </field>
+
+            <field
+                property="spphone"
+                depends="required">
+                <arg0 key="error.spphone"/>
+            </field>
+        </form>
+        <!--SI End-->
+    </formset>   
+</form-validation>

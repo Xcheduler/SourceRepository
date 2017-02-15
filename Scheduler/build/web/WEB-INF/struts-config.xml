@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean type="net.ecom.formbeans.LoginForm" name="LoginForm"/>
+        <form-bean type="net.ecom.formbeans.RegistrationForm" name="RegistrationForm"/>
+        <form-bean type="net.ecom.formbeans.ForgotPasswordForm" name="ForgotPasswordForm"/>
+    </form-beans>
+    
+     <global-exceptions>
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <action-mappings>
+
+        <action type="net.ecom.action.Accesslogin" path="/Accesslogin" name="LoginForm" scope="request">
+            <forward name="invalid" path="/Welcome.do"/>
+        </action>
+
+        <action type="net.ecom.action.HomePage" path ="/Welcome" name ="LoginForm" scope="session">
+            <forward name="success" path="/WEB-INF/jsp/Login/login.jsp"></forward>
+        </action>
+        
+        <action type="net.ecom.action.HomePage" path ="/forgotpassword" name ="LoginForm" scope="session">
+            <forward name="success" path="/WEB-INF/jsp/Login/forgotpassword.jsp"></forward>
+        </action>
+        
+        <action type="net.ecom.action.HomePage" path ="/resetnotification" scope="session">
+            <forward name="success" path="/WEB-INF/jsp/Login/resetnotification.jsp"></forward>
+        </action>
+        <action type="net.ecom.action.HomePage" path ="/resetpassword" name ="ForgotPasswordForm" scope="session">
+            <forward name="success" path="/WEB-INF/jsp/Login/resetpassword.jsp"></forward>
+        </action>
+        
+        <action type="net.ecom.action.HomePage" path ="/Register" name ="LoginForm" scope="session">
+            <forward name="success" path="/WEB-INF/jsp/Login/registration.jsp"></forward>
+        </action>
+        
+        <action path="/MainPage" type="net.ecom.action.MainPage" scope="request">
+            <forward name="success" path=".welcomescreen"/>
+        </action>
+
+        <action input="/" name="LoginForm" path="/LoginAction" scope="session" type="net.ecom.action.LoginAction">
+            <forward name="success" path=".home"/>
+            <forward name="fail" path="/WEB-INF/jsp/Login/login.jsp"/>
+        </action>
+        
+        	<action name="calender" path="/calenderAction" scope="session" type="com.scheduler.actions.CalenderAction">
+		<forward name="Success" path=".calender"/>
+	</action>
+        
+        <action name="dashborad" path="/dashboardAction" scope="session" type="com.scheduler.actions.DashboardAction">
+		<forward name="Success" path=".home"/>
+	</action>
+        
+        <action name="customers" path="/customer" type="com.scheduler.actions.CustomerHandler" parameter="execute">
+            <forward name="Success" path=".customer"/>
+        </action>
+        
+        <action name="staffs" path="/staff" type="com.scheduler.actions.StaffHandler" parameter="execute">
+            <forward name="Success" path=".staff"/>
+        </action>
+                                
+        <action name="profile" path="/profile"  type="com.scheduler.actions.ProfileHandler" parameter="execute">
+            <forward name="Success" path=".profile"/>            
+        </action>
+                
+        <action name="services" path="/services" scope="session" type="com.scheduler.actions.ServicesHandler" parameter="execute">
+            <forward name="Success" path=".services"/>            
+        </action>
+        <action name="payments" path="/payments" scope="session" type="com.scheduler.actions.PaymentsHandler">
+            <forward name="Success" path=".payments"/>            
+        </action>
+        <action name="classes" path="/classes" scope="session" type="com.scheduler.actions.ClassesHandler">
+            <forward name="Success" path=".classes"/>            
+        </action>
+        <action name="notifications" path="/notifications" scope="session" type="com.scheduler.actions.NotificationsHandler">
+            <forward name="Success" path=".notifications"/>            
+        </action>
+        <action name="preferences" path="/preferences" scope="session" type="com.scheduler.actions.PreferencesHandler">
+            <forward name="Success" path=".preferences"/>            
+        </action>
+        
+         <action type="net.ecom.action.RegistrationAction" path="/RegistrationAction" name="RegistrationForm" scope="request">
+            <forward name="success" path=".home"/>
+            <forward name="fail" path="/WEB-INF/jsp/fail.jsp"/>
+        </action>
+        
+         <action type="net.ecom.action.ForgotPasswordAction" path="/ForgotPasswordAction" name="ForgotPasswordForm" scope="request">
+            <forward name="success" path="/WEB-INF/jsp/Login/resetnotification.jsp"/>
+            <forward name="fail" path="/WEB-INF/jsp/fail.jsp"/>
+        </action>
+         <action type="net.ecom.action.ResetPasswordAction" path="/ResetPasswordAction" name="ResetPasswordForm" scope="request">
+            <forward name="success" path="/Welcome.do"/>
+            <forward name="fail" path="/WEB-INF/jsp/fail.jsp"/>
+        </action>
+        
+        
+
+    </action-mappings>
+
+    <controller processorClass="net.ecom.controller.RequestController" />
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>
+    <message-resources key="languageName" parameter="com/myapp/struts/languageSelection"/>
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+
+</struts-config>

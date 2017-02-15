@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+    <definition name=".mainLayout" path="/WEB-INF/jsp/layout/MainLayout.jsp">
+        <put name="title" value="Login"/>
+        <put name="menu" value="/WEB-INF/jsp/layout/menu.jsp"/>
+        <put name="top" value="/WEB-INF/jsp/layout/top.jsp"/>
+        <put name="footer" value="/WEB-INF/jsp/layout/footer.jsp"/>
+    </definition>
+    <definition name=".home" extends=".mainLayout">
+        <put name="title" value="e-Commerce"/>
+        <put name="body" value="/WEB-INF/jsp/dashboard/dashboard.jsp"/>
+    </definition>
+    <definition name=".calender" extends=".mainLayout">
+        <put name="title" value="calender"/>
+        <put name="body" value="/WEB-INF/jsp/calendar/calendar.jsp"/>
+    </definition>
+    <definition name=".customer" extends=".mainLayout">
+        <put name="customers" value="customers"/>
+        <put name="body" value="/WEB-INF/jsp/customer/customer.jsp"/>
+    </definition>
+    <definition name=".staff" extends=".mainLayout">
+        <put name="staffs" value="staffs"/>
+        <put name="body" value="/WEB-INF/jsp/staff/staff.jsp"/>
+    </definition>
+    <definition name=".profile" extends=".mainLayout">
+        <put name=".profile" value="profile"/>
+        <put name="body" value="/WEB-INF/jsp/profile/profile.jsp"/>
+    </definition>
+    
+    <definition name=".services" extends=".mainLayout">
+        <put name=".services" value="services"/>
+        <put name="body" value="/WEB-INF/jsp/service/service.jsp"/>
+    </definition>
+    <definition name=".payments" extends=".mainLayout">
+        <put name=".payments" value="payments"/>
+        <put name="body" value="/WEB-INF/jsp/payments.html"/>
+    </definition>
+    <definition name=".classes" extends=".mainLayout">
+        <put name=".classes" value="classes"/>
+        <put name="body" value="/WEB-INF/jsp/classes.html"/>
+    </definition>
+    <definition name=".notifications" extends=".mainLayout">
+        <put name=".notifications" value="notifications"/>
+        <put name="body" value="/WEB-INF/jsp/notifications.html"/>
+    </definition>
+    <definition name=".preferences" extends=".mainLayout">
+        <put name=".preferences" value="preferences"/>
+        <put name="body" value="/WEB-INF/jsp/preferences.html"/>
+    </definition>
+    
+    <definition name="${YOUR_DEFINITION_HERE}">
+    </definition>
+</tiles-definitions>
